@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 新春旅遊最佳順路行程表</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+            serif: ['"Noto Serif TC"', 'serif'],
+          },
+          colors: {
+            ink: '#2c241c',
+            paper: '#fffdf8',
+            cinnabar: '#9d1c2b',
+            gold: '#b8893a',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --ink: #2c241c;
+      --paper: #fffdf8;
+      --line: #eadcc4;
+      --cinnabar: #9d1c2b;
+      --forest: #0f6b56;
+      --amber: #9a5410;
+    }
+
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(157, 28, 43, 0.08), transparent 32%),
+        radial-gradient(circle at 96% 8%, rgba(184, 137, 58, 0.16), transparent 28%),
+        linear-gradient(180deg, #fbf6ee 0%, #f7f1e6 100%);
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: "Noto Serif TC", serif;
+    }
+
+    .itinerary {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .itinerary col.col-time { width: 8%; }
+    .itinerary col.col-drive { width: 10%; }
+    .itinerary col.col-spot { width: 24%; }
+    .itinerary col.col-stay { width: 10%; }
+    .itinerary col.col-fee { width: 8%; }
+    .itinerary col.col-note { width: 16%; }
+
+    .itinerary th,
+    .itinerary td {
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .itinerary th {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+      padding: 14px 8px;
+      text-align: left;
+      color: #fffdf8;
+    }
+
+    .itinerary td {
+      font-size: 16px;
+      line-height: 1.6;
+      padding: 14px 8px;
+      vertical-align: top;
+      background: #fffdf8;
+    }
+
+    .itinerary tbody tr:nth-child(even) td {
+      background: #fff8ef;
+    }
+
+    .itinerary tbody tr:hover td {
+      background: #fff1dc;
+    }
+
+    .itinerary .is-highlight td {
+      background: #fff6e4;
+    }
+
+    .itinerary tfoot td {
+      font-size: 16px;
+      font-weight: 700;
+      background: #f6efe4;
+      border-top: 2px solid var(--line);
+    }
+
+    .day-red .itinerary thead th { background: #8e1b2a; }
+    .day-green .itinerary thead th { background: #0e6652; }
+    .day-amber .itinerary thead th { background: #8d4e0d; }
+
+    .table-scroll {
+      overflow: visible;
+      border: 1px solid var(--line);
+      border-radius: 0 0 22px 22px;
+      background: white;
+    }
+
+    .table-scroll::-webkit-scrollbar { height: 10px; }
+    .table-scroll::-webkit-scrollbar-thumb {
+      background: #d7c4a4;
+      border-radius: 999px;
+    }
+
+    .guide-link {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      max-width: 100%;
+      margin-top: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid #e4c98a;
+      background: #fff8ea;
+      color: #7a4e10;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+
+    .guide-link:hover {
+      background: var(--cinnabar);
+      border-color: var(--cinnabar);
+      color: white;
+    }
+
+    .spot-name {
+      font-family: "Noto Serif TC", serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #241c16;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .time {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      white-space: normal;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: #e8f1fb;
+      color: #1d4f86;
+      font-size: 16px;
+      font-weight: 700;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .pill-mute {
+      background: #f3eee6;
+      color: #6d6256;
+    }
+
+    .flag {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      margin-top: 6px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: #e5f6ee;
+      color: #0d6a45;
+      font-size: 16px;
+      font-weight: 700;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 14px;
+      border: 1px solid #eadfce;
+      background: rgba(255, 253, 248, 0.9);
+      color: #3d342c;
+      font-size: 16px;
+      font-weight: 700;
+      white-space: normal;
+    }
+
+    .tab-btn.is-active {
+      background: #2a2118;
+      border-color: #2a2118;
+      color: white;
+      box-shadow: 0 8px 18px rgba(42, 33, 24, 0.16);
+    }
+
+    .day-sheet {
+      background: rgba(255, 253, 248, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(80, 42, 18, 0.06);
+      max-width: 100%;
+    }
+
+    .day-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 16px;
+      color: white;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .day-head > div:first-child {
+      min-width: 0;
+      flex: 1 1 16rem;
+    }
+
+    .day-head h2,
+    .day-head p,
+    .route-card h2,
+    .route-card p,
+    .info-card,
+    .info-card span,
+    .info-card p,
+    label,
+    header h1,
+    header p {
+      overflow-wrap: anywhere;
+      min-width: 0;
+    }
+
+    .phone-list article {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    .phone-list .spot-name {
+      flex: 1 1 auto;
+    }
+
+    .phone-list .time {
+      flex: 0 0 auto;
+    }
+
+    .info-card .flex {
+      flex-wrap: wrap;
+    }
+
+    .day-red .day-head { background: linear-gradient(110deg, #7d1524 0%, #b4333a 58%, #c4843a 140%); }
+    .day-green .day-head { background: linear-gradient(110deg, #0c5142 0%, #148066 62%, #c4a15a 150%); }
+    .day-amber .day-head { background: linear-gradient(110deg, #7a3e08 0%, #c56a16 60%, #e0b15a 150%); }
+
+    .day-seal {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      font-family: "Noto Serif TC", serif;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .info-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 12px 30px rgba(80, 42, 18, 0.05);
+    }
+
+    .route-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 24px rgba(80, 42, 18, 0.04);
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+      #tab-day1, #tab-day2, #tab-day3 { display: block !important; }
+      body { background: white; }
+      .day-sheet, .info-card, .route-card { box-shadow: none; }
+      .table-scroll { display: block !important; overflow: visible; }
+      .phone-list { display: none !important; }
+      .itinerary { min-width: 0; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <header class="sticky top-0 z-40 border-b border-[#e6d3b4] bg-[#fffdf8]/92 backdrop-blur-md">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex min-w-0 items-center gap-4">
+          <div class="day-seal shrink-0 bg-[#9d1c2b] text-[#f8e7b2] border border-[#e7c56a] shadow-sm" aria-hidden="true">馬</div>
+          <div class="min-w-0">
+            <p class="text-base font-bold tracking-wide text-[#9d1c2b]">2026 馬年新春 · 全程順路不折返</p>
+            <h1 class="serif text-3xl sm:text-4xl font-black text-[#2c241c] leading-tight">2026 新春旅遊指南</h1>
+          </div>
+        </div>
+        <button onclick="window.print()" class="no-print self-start lg:self-auto rounded-xl bg-[#2c241c] px-4 py-2.5 text-base font-bold text-white">
+          <i class="fa-solid fa-print mr-2" aria-hidden="true"></i>列印行程
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <section class="grid gap-4 lg:grid-cols-3">
+      <article class="route-card border-t-4 border-t-[#9d1c2b]">
+        <p class="text-base font-bold text-[#9d1c2b]">初一 · 南投山林</p>
+        <h2 class="serif mt-1 text-2xl font-black">賞櫻與森林浴</h2>
+        <p class="mt-2 text-base text-[#5c5148]">萬興宮祈福 → 石馬公園河津櫻 → 杉林溪 → 泡麵土地公</p>
+      </article>
+      <article class="route-card border-t-4 border-t-[#0f6b56]">
+        <p class="text-base font-bold text-[#0f6b56]">初二 · 苗栗牧場</p>
+        <h2 class="serif mt-1 text-2xl font-black">雙牧場與伴手禮</h2>
+        <p class="mt-2 text-base text-[#5c5148]">泉井牧場 → 飛牛牧場野餐 → 垂坤旗艦店 → 小火鍋</p>
+      </article>
+      <article class="route-card border-t-4 border-t-[#9a5410]">
+        <p class="text-base font-bold text-[#9a5410]">初三 · 彰化海線</p>
+        <h2 class="serif mt-1 text-2xl font-black">濕地、採蚵與老街</h2>
+        <p class="mt-2 text-base text-[#5c5148]">芳苑海空步道 → 王功採蚵 → 溪湖糖廠 → 鹿港老街</p>
+      </article>
+    </section>
+
+    <div class="no-print flex flex-wrap gap-2 pb-1" role="tablist" aria-label="行程分頁">
+      <button type="button" id="tab-btn-all" class="tab-btn is-active" data-day="all" role="tab" aria-selected="true" onclick="switchTab('all')">
+        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>完整三日總覽
+      </button>
+      <button type="button" id="tab-btn-day1" class="tab-btn" data-day="day1" role="tab" aria-selected="false" onclick="switchTab('day1')">
+        <span class="h-3 w-3 rounded-full bg-[#c23b45]"></span>初一（南投杉林溪）
+      </button>
+      <button type="button" id="tab-btn-day2" class="tab-btn" data-day="day2" role="tab" aria-selected="false" onclick="switchTab('day2')">
+        <span class="h-3 w-3 rounded-full bg-[#14956f]"></span>初二（苗栗雙牧場）
+      </button>
+      <button type="button" id="tab-btn-day3" class="tab-btn" data-day="day3" role="tab" aria-selected="false" onclick="switchTab('day3')">
+        <span class="h-3 w-3 rounded-full bg-[#d4892a]"></span>初三（彰化海線人文）
+      </button>
+    </div>
+
+    <section id="tab-day1" class="day-sheet day-red tab-content">
+      <div class="day-head">
+        <div class="flex min-w-0 items-start gap-4">
+          <div class="day-seal shrink-0" aria-hidden="true">壹</div>
+          <div class="min-w-0">
+            <p class="text-base font-bold text-[#f8e7b2]">2026年 新春第一天</p>
+            <h2 class="serif text-2xl sm:text-[28px] font-black leading-snug">初一：南投鹿谷石馬公園、杉林溪與中寮泡麵土地公</h2>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 text-base font-bold">
+          <span class="rounded-full bg-black/20 px-4 py-2"><i class="fa-solid fa-ticket mr-2" aria-hidden="true"></i>門票 $350／人</span>
+          <span class="rounded-full bg-black/20 px-4 py-2"><i class="fa-solid fa-car mr-2" aria-hidden="true"></i>停車費 $100／車</span>
+        </div>
+      </div>
+      <p class="no-print hidden bg-[#fff8ee] px-6 py-3 text-base text-[#6a5340] lg:block">景點名稱下方可開啟旅人圖文。欄位文字過長會自動換行。</p>
+      <div class="table-scroll hidden lg:block">
+        <table class="itinerary">
+          <colgroup>
+            <col class="col-time" />
+            <col class="col-drive" />
+            <col class="col-time" />
+            <col class="col-spot" />
+            <col class="col-stay" />
+            <col class="col-time" />
+            <col class="col-fee" />
+            <col class="col-fee" />
+            <col class="col-note" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>出發時間</th>
+              <th>車程需時</th>
+              <th>到達時間</th>
+              <th>景點名稱／內容重點</th>
+              <th>滯留時間</th>
+              <th>離開時間</th>
+              <th>活動門票</th>
+              <th>停車費</th>
+              <th>行程備註與建議</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time text-[#9d1c2b]">06:30</td>
+              <td><span class="pill pill-mute">—</span></td>
+              <td class="time">06:30</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-gopuram mr-2 text-[#c23b45]" aria-hidden="true"></i>萬興宮（早餐）、土地公</div>
+                <a class="guide-link" href="https://wanghsinfu.blogspot.com/2017/02/blog-post.html" target="_blank" rel="noopener noreferrer">圖文介紹・社口萬興宮初一祈福</a>
+              </td>
+              <td>50 分鐘</td>
+              <td class="time">07:20</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>新春首日祈福求平安，於廟宇周邊享用在地早餐</td>
+            </tr>
+            <tr>
+              <td class="time">07:20</td>
+              <td><span class="pill">60 分鐘</span></td>
+              <td class="time">08:20</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-tree mr-2 text-[#14956f]" aria-hidden="true"></i>南投・小半天石馬公園</div>
+                <a class="guide-link" href="https://sophiee.tw/nantou-sakura/" target="_blank" rel="noopener noreferrer">圖文介紹・蘇菲漫旅賞櫻</a>
+              </td>
+              <td>1小時10分</td>
+              <td class="time">09:30</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>知名河津櫻粉紅櫻花秘境，早晨清新好漫步</td>
+            </tr>
+            <tr class="is-highlight">
+              <td class="time">09:30</td>
+              <td><span class="pill">45 分鐘</span></td>
+              <td class="time">10:15</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-water mr-2 text-[#0e7490]" aria-hidden="true"></i>南投・杉林溪森林生態渡假園區</div>
+                <p class="mt-1 font-bold text-[#9a5410]"><i class="fa-solid fa-utensils mr-1" aria-hidden="true"></i>自行先帶午餐野餐</p>
+                <a class="guide-link" href="https://decolifetw.com/sun-link-sea/" target="_blank" rel="noopener noreferrer">圖文介紹・松瀧岩與森林步道</a>
+              </td>
+              <td class="font-bold text-[#9a5410]">5 小時</td>
+              <td class="time">15:15</td>
+              <td class="font-bold text-[#9d1c2b]">$350</td>
+              <td class="font-bold text-[#1d4f86]">$100</td>
+              <td>健行松瀧岩瀑布、天地眼、森林浴步道</td>
+            </tr>
+            <tr>
+              <td class="time">15:15</td>
+              <td><span class="pill">75 分鐘</span></td>
+              <td class="time">16:30</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-bowl-food mr-2 text-[#ea580c]" aria-hidden="true"></i>南投中寮・石龍宮（泡麵土地公）</div>
+                <a class="guide-link" href="https://happytravel.tw/nantou-tudong/" target="_blank" rel="noopener noreferrer">圖文介紹・黑皮旅遊筆記</a>
+              </td>
+              <td>1小時15分</td>
+              <td class="time">17:45</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>下山順路朝聖發財泡麵、吃平安點心補財庫</td>
+            </tr>
+            <tr>
+              <td class="time">17:45</td>
+              <td><span class="pill">50 分鐘</span></td>
+              <td class="time text-[#0f6b56]">18:35</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-house mr-2 text-[#0f6b56]" aria-hidden="true"></i>Go Home／家裡吃飯</div>
+              </td>
+              <td>—</td>
+              <td class="time">—</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>經國道 3 號順暢返抵家門，圍爐溫馨享用晚飯</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6" class="text-right">初一小計</td>
+              <td class="text-[#9d1c2b]">$350／人</td>
+              <td class="text-[#1d4f86]">$100／車</td>
+              <td>初一順路不塞車下山方案</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="phone-list space-y-3 p-4 lg:hidden">
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#c23b45] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">萬興宮（早餐）、土地公</h3>
+            <span class="time text-[#9d1c2b]">06:30</span>
+          </div>
+          <p class="mt-2 text-base">滯留 50 分鐘，07:20 離開。門票 $0，停車 $0。</p>
+          <p class="mt-1 text-base text-[#5c5148]">新春首日祈福求平安，於廟宇周邊享用在地早餐。</p>
+          <a class="guide-link" href="https://wanghsinfu.blogspot.com/2017/02/blog-post.html" target="_blank" rel="noopener noreferrer">圖文介紹・社口萬興宮初一祈福</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#14956f] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">小半天石馬公園</h3>
+            <span class="time">08:20</span>
+          </div>
+          <p class="mt-2 text-base">車程 60 分鐘。滯留 1 小時 10 分，09:30 離開。門票 $0，停車 $0。</p>
+          <p class="mt-1 text-base text-[#5c5148]">河津櫻粉紅櫻花秘境，早晨清新好漫步。</p>
+          <a class="guide-link" href="https://sophiee.tw/nantou-sakura/" target="_blank" rel="noopener noreferrer">圖文介紹・蘇菲漫旅賞櫻</a>
+        </article>
+        <article class="rounded-2xl border border-[#e7c98a] border-l-4 border-l-[#d4892a] bg-[#fff8ee] p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">杉林溪森林生態渡假園區</h3>
+            <span class="time">10:15</span>
+          </div>
+          <p class="mt-2 text-base font-bold text-[#9a5410]">自行先帶午餐野餐</p>
+          <p class="mt-1 text-base">車程 45 分鐘。滯留 5 小時，15:15 離開。門票 $350／人，停車 $100／車。</p>
+          <p class="mt-1 text-base text-[#5c5148]">健行松瀧岩瀑布、天地眼、森林浴步道。</p>
+          <a class="guide-link" href="https://decolifetw.com/sun-link-sea/" target="_blank" rel="noopener noreferrer">圖文介紹・松瀧岩與森林步道</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#ea580c] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">中寮石龍宮（泡麵土地公）</h3>
+            <span class="time">16:30</span>
+          </div>
+          <p class="mt-2 text-base">下山車程 75 分鐘。滯留 1 小時 15 分，17:45 離開。門票 $0，停車 $0。</p>
+          <p class="mt-1 text-base text-[#5c5148]">朝聖發財泡麵，吃平安點心補財庫。</p>
+          <a class="guide-link" href="https://happytravel.tw/nantou-tudong/" target="_blank" rel="noopener noreferrer">圖文介紹・黑皮旅遊筆記</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#0f6b56] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">回家吃飯</h3>
+            <span class="time text-[#0f6b56]">18:35</span>
+          </div>
+          <p class="mt-2 text-base">北上車程約 50 分鐘，經國道 3 號返家圍爐。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tab-day2" class="day-sheet day-green tab-content">
+      <div class="day-head">
+        <div class="flex min-w-0 items-start gap-4">
+          <div class="day-seal shrink-0" aria-hidden="true">貳</div>
+          <div class="min-w-0">
+            <p class="text-base font-bold text-[#d9f5ea]">2026年 新春第二天</p>
+            <h2 class="serif text-2xl sm:text-[28px] font-black leading-snug">初二：苗栗苑裡泉井牧場、飛牛牧場與垂坤採購</h2>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 text-base font-bold">
+          <span class="rounded-full bg-black/20 px-4 py-2"><i class="fa-solid fa-ticket mr-2" aria-hidden="true"></i>門票 $280／人</span>
+          <span class="rounded-full bg-black/20 px-4 py-2"><i class="fa-solid fa-car mr-2" aria-hidden="true"></i>停車費 $50／車</span>
+        </div>
+      </div>
+      <p class="no-print hidden bg-[#f3faf7] px-6 py-3 text-base text-[#24584a] lg:block">景點名稱下方可開啟旅人圖文。欄位文字過長會自動換行。</p>
+      <div class="table-scroll hidden lg:block">
+        <table class="itinerary">
+          <colgroup>
+            <col class="col-time" />
+            <col class="col-drive" />
+            <col class="col-time" />
+            <col class="col-spot" />
+            <col class="col-stay" />
+            <col class="col-time" />
+            <col class="col-fee" />
+            <col class="col-fee" />
+            <col class="col-note" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>出發時間</th>
+              <th>車程需時</th>
+              <th>到達時間</th>
+              <th>景點名稱／內容重點</th>
+              <th>滯留時間</th>
+              <th>離開時間</th>
+              <th>活動門票</th>
+              <th>停車費</th>
+              <th>行程備註與順路設計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time text-[#0f6b56]">07:30</td>
+              <td><span class="pill pill-mute">—</span></td>
+              <td class="time">07:30</td>
+              <td><div class="spot-name"><i class="fa-solid fa-location-dot mr-2 text-[#8a7b6b]" aria-hidden="true"></i>神岡高工（集合出發）</div></td>
+              <td>—</td>
+              <td class="time">07:30</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>避開初二國道回娘家尖峰車潮，提早集合準時出發</td>
+            </tr>
+            <tr>
+              <td class="time">07:30</td>
+              <td><span class="pill">35 分鐘</span></td>
+              <td class="time">08:05</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-cow mr-2 text-[#0f6b56]" aria-hidden="true"></i>苗栗苑裡・泉井牧場</div>
+                <a class="guide-link" href="https://fbuon.com/blog/post/20180101" target="_blank" rel="noopener noreferrer">圖文介紹・天生寶家族</a>
+              </td>
+              <td>2 小時</td>
+              <td class="time">10:05</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>純樸酪農牧場、近距離看乳牛、純天然鮮奶小點</td>
+            </tr>
+            <tr class="is-highlight">
+              <td class="time">10:05</td>
+              <td><span class="pill">25 分鐘</span></td>
+              <td class="time">10:30</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-clover mr-2 text-[#0f6b56]" aria-hidden="true"></i>苗栗通霄・飛牛牧場</div>
+                <p class="mt-1 font-bold text-[#9a5410]"><i class="fa-solid fa-utensils mr-1" aria-hidden="true"></i>自行先帶午餐野餐</p>
+                <a class="guide-link" href="https://puddings.tw/flyingcow/" target="_blank" rel="noopener noreferrer">圖文介紹・Pudding 大草原</a>
+              </td>
+              <td class="font-bold text-[#0f6b56]">5 小時</td>
+              <td class="time">15:30</td>
+              <td class="font-bold text-[#9d1c2b]">$280</td>
+              <td class="font-bold text-[#1d4f86]">$50</td>
+              <td>大草原漫步野餐、餵小牛喝奶、擠牛奶互動體驗</td>
+            </tr>
+            <tr>
+              <td class="time">15:30</td>
+              <td><span class="pill">30 分鐘</span></td>
+              <td class="time">16:00</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-bag-shopping mr-2 text-[#e11d48]" aria-hidden="true"></i>苑裡・垂坤肉鬆旗艦店</div>
+                <a class="guide-link" href="https://baofamily.tw/chuei-kun/" target="_blank" rel="noopener noreferrer">圖文介紹・來飽寶家必買</a>
+              </td>
+              <td>1 小時</td>
+              <td class="time">17:00</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>位於國 3 苑裡交流道旁，南下極順路採買新年伴手禮</td>
+            </tr>
+            <tr>
+              <td class="time">17:00</td>
+              <td><span class="pill">35 分鐘</span></td>
+              <td class="time">17:35</td>
+              <td><div class="spot-name"><i class="fa-solid fa-house mr-2 text-[#8a7b6b]" aria-hidden="true"></i>Go Home（回家放戰利品／整裝）</div></td>
+              <td>25 分鐘</td>
+              <td class="time">18:00</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>下交流道回家放伴手禮、稍作洗漱換裝</td>
+            </tr>
+            <tr>
+              <td class="time">18:00</td>
+              <td><span class="pill">15 分鐘</span></td>
+              <td class="time text-[#c2410c]">18:15</td>
+              <td><div class="spot-name"><i class="fa-solid fa-fire mr-2 text-[#ea580c]" aria-hidden="true"></i>在地美味小火鍋（聚餐晚宴）</div></td>
+              <td>1小時45分</td>
+              <td class="time">20:00</td>
+              <td>約 $350</td>
+              <td>$0</td>
+              <td>春節暖心圍爐吃火鍋，結束牧場舒壓一日遊</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6" class="text-right">初二小計</td>
+              <td class="text-[#9d1c2b]">$280／人</td>
+              <td class="text-[#1d4f86]">$50／車</td>
+              <td>不含小火鍋個人餐飲自由消費</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="phone-list space-y-3 p-4 lg:hidden">
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#8a7b6b] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">神岡高工出發</h3>
+            <span class="time text-[#0f6b56]">07:30</span>
+          </div>
+          <p class="mt-2 text-base">提早集合，避開初二走春塞車。</p>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#0f6b56] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">苑裡泉井牧場</h3>
+            <span class="time">08:05</span>
+          </div>
+          <p class="mt-2 text-base">車程 35 分鐘。滯留 2 小時，10:05 離開。門票 $0，停車 $0。</p>
+          <p class="mt-1 text-base text-[#5c5148]">純樸酪農牧場，近距離看乳牛、品嚐鮮奶小點。</p>
+          <a class="guide-link" href="https://fbuon.com/blog/post/20180101" target="_blank" rel="noopener noreferrer">圖文介紹・天生寶家族</a>
+        </article>
+        <article class="rounded-2xl border border-[#e7c98a] border-l-4 border-l-[#d4892a] bg-[#fff8ee] p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">通霄飛牛牧場</h3>
+            <span class="time">10:30</span>
+          </div>
+          <p class="mt-2 text-base font-bold text-[#9a5410]">自帶午餐野餐</p>
+          <p class="mt-1 text-base">車程 25 分鐘。滯留 5 小時，15:30 離開。門票 $280／人，停車 $50／車。</p>
+          <a class="guide-link" href="https://puddings.tw/flyingcow/" target="_blank" rel="noopener noreferrer">圖文介紹・Pudding 大草原</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#e11d48] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">垂坤肉鬆旗艦店</h3>
+            <span class="time">16:00</span>
+          </div>
+          <p class="mt-2 text-base">車程 30 分鐘，國 3 交流道旁。滯留 1 小時，17:00 離開。</p>
+          <a class="guide-link" href="https://baofamily.tw/chuei-kun/" target="_blank" rel="noopener noreferrer">圖文介紹・來飽寶家必買</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#ea580c] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">回神岡後吃小火鍋</h3>
+            <span class="time text-[#c2410c]">18:15</span>
+          </div>
+          <p class="mt-2 text-base">17:35 先返家放伴手禮，18:15 開鍋，約 1 小時 45 分，餐費約 $350。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tab-day3" class="day-sheet day-amber tab-content">
+      <div class="day-head">
+        <div class="flex min-w-0 items-start gap-4">
+          <div class="day-seal shrink-0" aria-hidden="true">參</div>
+          <div class="min-w-0">
+            <p class="text-base font-bold text-[#fde8c4]">2026年 新春第三天・07:00 從容出發</p>
+            <h2 class="serif text-2xl sm:text-[28px] font-black leading-snug">初三：芳苑海空步道、王功採蚵、溪湖糖廠與鹿港老街</h2>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 text-base font-bold">
+          <span class="rounded-full bg-black/20 px-4 py-2"><i class="fa-solid fa-ticket mr-2" aria-hidden="true"></i>活動約 $550／人</span>
+          <span class="rounded-full bg-black/20 px-4 py-2"><i class="fa-solid fa-car mr-2" aria-hidden="true"></i>停車費 $50／車</span>
+        </div>
+      </div>
+      <p class="no-print hidden bg-[#fff8ee] px-6 py-3 text-base text-[#6a5340] lg:block">景點名稱下方可開啟旅人圖文。欄位文字過長會自動換行。</p>
+      <div class="table-scroll hidden lg:block">
+        <table class="itinerary">
+          <colgroup>
+            <col class="col-time" />
+            <col class="col-drive" />
+            <col class="col-time" />
+            <col class="col-spot" />
+            <col class="col-stay" />
+            <col class="col-time" />
+            <col class="col-fee" />
+            <col class="col-fee" />
+            <col class="col-note" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>出發時間</th>
+              <th>車程需時</th>
+              <th>到達時間</th>
+              <th>景點名稱／內容重點</th>
+              <th>滯留時間</th>
+              <th>離開時間</th>
+              <th>活動門票</th>
+              <th>停車費</th>
+              <th>順路調校分析</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time text-[#9a5410]">07:00</td>
+              <td><span class="pill pill-mute">—</span></td>
+              <td class="time">07:00</td>
+              <td><div class="spot-name"><i class="fa-solid fa-location-dot mr-2 text-[#8a7b6b]" aria-hidden="true"></i>神岡高工（集合出發）</div></td>
+              <td>—</td>
+              <td class="time">07:00</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>提早 45 分鐘出發，國 1 接台 76 直奔海線最南端</td>
+            </tr>
+            <tr class="is-highlight">
+              <td class="time">07:00</td>
+              <td><span class="pill">60 分鐘</span></td>
+              <td class="time">08:00</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-bridge-water mr-2 text-[#0f766e]" aria-hidden="true"></i>彰化芳苑・芳苑濕地海空步道<span class="flag">順路第一站</span></div>
+                <p class="mt-1 text-base text-[#5c5148]">紅樹林木棧道、潮間帶觀景，慢慢走完再北上</p>
+                <a class="guide-link" href="https://natsuphil.com/changhua/seasky-trail/" target="_blank" rel="noopener noreferrer">圖文介紹・小菲親子紅樹林</a>
+              </td>
+              <td>1小時45分</td>
+              <td class="time">09:45</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td class="font-bold text-[#0f6b56]">清晨海風涼爽，木棧道與觀景都不趕，拍完再走</td>
+            </tr>
+            <tr>
+              <td class="time">09:45</td>
+              <td><span class="pill">15 分鐘</span></td>
+              <td class="time">10:00</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-shrimp mr-2 text-[#ea580c]" aria-hidden="true"></i>王功蚵農阿祿專車生態之旅</div>
+                <p class="mt-1 text-base text-[#5c5148]">鐵牛採蚵車、摸文蛤、烤蚵吃到飽，含換洗與午餐</p>
+                <a class="guide-link" href="https://weiyingliao.pixnet.net/blog/posts/7120766848" target="_blank" rel="noopener noreferrer">圖文介紹・兔子小姐採蚵遊記</a>
+              </td>
+              <td class="font-bold text-[#9a5410]">3小時20分</td>
+              <td class="time">13:20</td>
+              <td class="font-bold text-[#9d1c2b]">約 $400</td>
+              <td>$0</td>
+              <td>10:00 抵達，體驗、換洗與烤蚵午餐都留緩衝；出發前仍請電話確認潮汐</td>
+            </tr>
+            <tr class="is-highlight">
+              <td class="time">13:20</td>
+              <td><span class="pill">30 分鐘</span></td>
+              <td class="time">13:50</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-train mr-2 text-[#b45309]" aria-hidden="true"></i>彰化溪湖・溪湖糖廠<span class="flag">順路輕遊</span></div>
+                <p class="mt-1 text-base text-[#5c5148]">搭一班蒸汽五分車、品嚐糖廠冰品即可</p>
+                <a class="guide-link" href="https://sister.travel/xihu/" target="_blank" rel="noopener noreferrer">圖文介紹・五分車與糖廠吃冰</a>
+              </td>
+              <td>1小時40分</td>
+              <td class="time">15:30</td>
+              <td>約 $150</td>
+              <td>$0</td>
+              <td class="font-bold text-[#0f6b56]">午餐後沿 148 縣道過來，五分車加吃冰就好，不把下午排滿</td>
+            </tr>
+            <tr>
+              <td class="time">15:30</td>
+              <td><span class="pill">25 分鐘</span></td>
+              <td class="time">15:55</td>
+              <td>
+                <div class="spot-name"><i class="fa-solid fa-landmark mr-2 text-[#9d1c2b]" aria-hidden="true"></i>鹿港老街與鹿港天后宮<span class="flag">順向北上</span></div>
+                <p class="mt-1 text-base text-[#5c5148]">古蹟巡禮、初三祈福、老街散步，從容吃完晚餐再走</p>
+                <a class="guide-link" href="https://www.jamesdiscover.tw/blog/16621" target="_blank" rel="noopener noreferrer">圖文介紹・老街與天后宮一日</a>
+              </td>
+              <td>3 小時</td>
+              <td class="time">18:55</td>
+              <td>$0</td>
+              <td class="font-bold text-[#1d4f86]">$50</td>
+              <td class="font-bold text-[#0f6b56]">15:55 進老街，祈福、逛街、晚餐都有 3 小時，結束後走台 61 或國 1</td>
+            </tr>
+            <tr>
+              <td class="time">18:55</td>
+              <td><span class="pill">40 分鐘</span></td>
+              <td class="time text-[#0f6b56]">19:35</td>
+              <td><div class="spot-name"><i class="fa-solid fa-flag-checkered mr-2 text-[#0f6b56]" aria-hidden="true"></i>平安賦歸（回到神岡高工／溫暖的家）</div></td>
+              <td>—</td>
+              <td class="time">—</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>圓滿結束三天新春行程，19:35 平安返家</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6" class="text-right">初三小計</td>
+              <td class="text-[#9d1c2b]">約 $550／人</td>
+              <td class="text-[#1d4f86]">$50／車</td>
+              <td class="text-[#0f6b56]">07:00 出發，各站留緩衝，19:35 返家</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="phone-list space-y-3 p-4 lg:hidden">
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#8a7b6b] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">神岡高工出發</h3>
+            <span class="time text-[#9a5410]">07:00</span>
+          </div>
+          <p class="mt-2 text-base">提早出發，走台 76 線快速道路往芳苑海岸。</p>
+        </article>
+        <article class="rounded-2xl border border-[#cde8df] border-l-4 border-l-[#0f766e] bg-[#f4fbf8] p-4">
+          <p class="flag ml-0">順路首站</p>
+          <div class="mt-2 flex items-start justify-between gap-3">
+            <h3 class="spot-name">芳苑海空步道</h3>
+            <span class="time">08:00</span>
+          </div>
+          <p class="mt-2 text-base">車程 60 分鐘。滯留 1 小時 45 分，09:45 離開。門票 $0，停車 $0。</p>
+          <p class="mt-1 text-base text-[#5c5148]">清晨海風涼爽，木棧道可慢慢走完再北上。</p>
+          <a class="guide-link" href="https://natsuphil.com/changhua/seasky-trail/" target="_blank" rel="noopener noreferrer">圖文介紹・小菲親子紅樹林</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#ea580c] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">王功蚵農阿祿專車</h3>
+            <span class="time">10:00</span>
+          </div>
+          <p class="mt-2 text-base">車程 15 分鐘。滯留 3 小時 20 分（含換洗與午餐），13:20 離開。體驗與烤蚵約 $400／人。</p>
+          <a class="guide-link" href="https://weiyingliao.pixnet.net/blog/posts/7120766848" target="_blank" rel="noopener noreferrer">圖文介紹・兔子小姐採蚵遊記</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#b45309] bg-[#fff8ee] p-4">
+          <p class="flag ml-0">順路輕遊</p>
+          <div class="mt-2 flex items-start justify-between gap-3">
+            <h3 class="spot-name">溪湖糖廠</h3>
+            <span class="time">13:50</span>
+          </div>
+          <p class="mt-2 text-base">沿 148 線約 30 分鐘。滯留 1 小時 40 分，15:30 離開。五分車與冰品約 $150／人。</p>
+          <a class="guide-link" href="https://sister.travel/xihu/" target="_blank" rel="noopener noreferrer">圖文介紹・五分車與糖廠吃冰</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#9d1c2b] bg-white p-4">
+          <p class="flag ml-0">順向北上</p>
+          <div class="mt-2 flex items-start justify-between gap-3">
+            <h3 class="spot-name">鹿港老街與天后宮</h3>
+            <span class="time">15:55</span>
+          </div>
+          <p class="mt-2 text-base">車程 25 分鐘。滯留 3 小時，18:55 離開。停車約 $50／車。</p>
+          <p class="mt-1 text-base text-[#5c5148]">天后宮祈福、逛老街，晚餐吃完再走，不必看時鐘。</p>
+          <a class="guide-link" href="https://www.jamesdiscover.tw/blog/16621" target="_blank" rel="noopener noreferrer">圖文介紹・老街與天后宮一日</a>
+        </article>
+        <article class="rounded-2xl border border-[#eadcc4] border-l-4 border-l-[#0f6b56] bg-white p-4">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="spot-name">平安賦歸神岡</h3>
+            <span class="time text-[#0f6b56]">19:35</span>
+          </div>
+          <p class="mt-2 text-base">18:55 出發，走台 61 或國 1，約 40 分鐘直達神岡。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <article class="info-card p-6">
+        <h3 class="serif flex items-center gap-2 text-xl font-black">
+          <i class="fa-solid fa-wallet text-[#b8893a]" aria-hidden="true"></i>三日費用明細彙總
+        </h3>
+        <p class="mt-1 text-base text-[#6d6256]">初一至初三</p>
+        <div class="mt-4 space-y-3 text-base">
+          <div class="flex items-center justify-between gap-3 border-b border-dashed border-[#eadcc4] pb-3">
+            <span>初一（杉林溪門票＋停車）</span>
+            <span class="time">門票 $350／車 $100</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 border-b border-dashed border-[#eadcc4] pb-3">
+            <span>初二（飛牛牧場門票＋停車）</span>
+            <span class="time">門票 $280／車 $50</span>
+          </div>
+          <div class="flex items-center justify-between gap-3 border-b border-dashed border-[#eadcc4] pb-3">
+            <span>初三（王功採蚵＋糖廠＋鹿港）</span>
+            <span class="time">活動 $550／車 $50</span>
+          </div>
+          <div class="flex items-end justify-between gap-3 pt-1">
+            <span class="font-bold">個人基本總支出預估</span>
+            <span class="serif text-3xl font-black text-[#9d1c2b]">NT$ 1,180<span class="ml-1 text-base font-bold text-[#6d6256]">／人</span></span>
+          </div>
+          <div class="flex items-center justify-between text-base">
+            <span>三日整車停車費總計</span>
+            <span class="time text-lg text-[#1d4f86]">NT$ 200／車</span>
+          </div>
+        </div>
+        <p class="mt-4 rounded-xl bg-[#f8f1e6] p-3 text-base text-[#6d6256]">以上不含個人採買伴手禮、加油費及初二小火鍋餐費。遊記頁上的票價、營業時間可能與本表不同，出發前請再向現場確認。</p>
+      </article>
+
+      <article class="info-card p-6">
+        <h3 class="serif flex items-center gap-2 text-xl font-black">
+          <i class="fa-solid fa-list-check text-[#0f6b56]" aria-hidden="true"></i>新春出遊隨身備忘清單
+        </h3>
+        <ul class="mt-4 space-y-3 text-base">
+          <li class="flex items-start gap-3">
+            <input type="checkbox" id="c1" class="mt-1 h-5 w-5 rounded accent-[#9d1c2b]" checked>
+            <label for="c1"><strong>自備午餐</strong>：初一杉林溪、初二飛牛牧場野餐輕食</label>
+          </li>
+          <li class="flex items-start gap-3">
+            <input type="checkbox" id="c2" class="mt-1 h-5 w-5 rounded accent-[#9d1c2b]" checked>
+            <label for="c2"><strong>高山保暖</strong>：初一杉林溪海拔高、溫差大，備禦寒外套</label>
+          </li>
+          <li class="flex items-start gap-3">
+            <input type="checkbox" id="c3" class="mt-1 h-5 w-5 rounded accent-[#9d1c2b]" checked>
+            <label for="c3"><strong>換洗衣物</strong>：初三王功採蚵摸蛤易沾濕，帶備用衣物襪子</label>
+          </li>
+          <li class="flex items-start gap-3">
+            <input type="checkbox" id="c4" class="mt-1 h-5 w-5 rounded accent-[#9d1c2b]" checked>
+            <label for="c4"><strong>環保購物袋</strong>：初二垂坤採購與鹿港老街必備大袋子</label>
+          </li>
+          <li class="flex items-start gap-3">
+            <input type="checkbox" id="c5" class="mt-1 h-5 w-5 rounded accent-[#9d1c2b]" checked>
+            <label for="c5"><strong>個人零錢</strong>：拜拜香油錢、石龍宮添油香、投幣機飲料</label>
+          </li>
+        </ul>
+      </article>
+
+      <article class="info-card p-6">
+        <h3 class="serif flex items-center gap-2 text-xl font-black">
+          <i class="fa-solid fa-traffic-light text-[#1d4f86]" aria-hidden="true"></i>行車導航與路況建議
+        </h3>
+        <div class="mt-4 space-y-3 text-base">
+          <div class="rounded-2xl border border-[#d7e6f5] bg-[#f4f8fd] p-4">
+            <p class="font-bold text-[#1d4f86]"><i class="fa-solid fa-shield-halved mr-2" aria-hidden="true"></i>避開初一、初二塞車</p>
+            <p class="mt-2 text-[#24486e]">杉林溪下山建議於 15:30 前出發，銜接中寮石龍宮走縣道，避開竹山交流道瓶頸。初二回程在垂坤買完後，可由苑裡交流道上國 3，動線最短。</p>
+          </div>
+          <div class="rounded-2xl border border-[#f0ddb4] bg-[#fff8ee] p-4">
+            <p class="font-bold text-[#9a5410]"><i class="fa-solid fa-water mr-2" aria-hidden="true"></i>王功潮汐注意</p>
+            <p class="mt-2 text-[#6a4a22]">初三 07:00 從神岡出發，08:00 到芳苑慢慢走，10:00 進王功。阿祿採蚵車視當日潮汐調整，建議出發前一週致電確認集合時間；糖廠只排五分車與吃冰，傍晚 3 小時留給鹿港。</p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="mt-12 border-t border-[#e6d3b4] bg-[#2c241c] py-8 text-center text-base text-[#f3e6d4]">
+    <p class="font-bold text-white">祝您 2026 新春佳節愉快，闔家平安，出遊一路順風。</p>
+    <p class="mt-2 text-[#e6d3b4]">本頁可離線保存，並支援手機直向瀏覽與列印。</p>
+  </footer>
+
+  <script>
+    /**
+     * 切換行程分頁，並同步分頁按鈕狀態。
+     * @param {"all" | "day1" | "day2" | "day3"} day 要顯示的日次；all 為三日總覽。
+     * @returns {void}
+     */
+    function switchTab(day) {
+      const days = ["day1", "day2", "day3"];
+      document.querySelectorAll(".tab-btn").forEach((button) => {
+        const active = button.dataset.day === day;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      days.forEach((id) => {
+        const section = document.getElementById(`tab-${id}`);
+        if (!section) return;
+        section.style.display = day === "all" || day === id ? "" : "none";
+      });
+    }
+  </script>
+</body>
+</html>

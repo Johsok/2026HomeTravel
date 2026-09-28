@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 新春旅遊最佳順路行程表</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+            display: ['Oswald', 'sans-serif'],
+          },
+          colors: {
+            spring: {
+              red: '#C82333',
+              darkred: '#8A1420',
+              gold: '#F4B41A',
+              lightgold: '#FEF3C7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #fef6f5 0%, #f7f9fc 100%);
+      min-height: 100vh;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 999px;
+    }
+    .badge-pill {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      .tab-content {
+        display: block !important;
+      }
+      body {
+        background: white;
+      }
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased font-sans flex flex-col min-h-screen">
+
+  <!-- Navigation / Header -->
+  <header class="bg-gradient-to-r from-red-800 via-red-700 to-amber-700 text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="bg-amber-400 text-red-900 text-xs font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              2026 馬年新春
+            </span>
+            <span class="text-amber-200 text-sm font-medium flex items-center gap-1">
+              <i class="fa-solid fa-route"></i> 智慧動線最佳化版
+            </span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mt-1 flex items-center gap-2">
+            <span>2026 新春旅遊指南</span>
+            <span class="text-amber-300 text-lg font-normal hidden sm:inline-block">| 全程順路不折返</span>
+          </h1>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="flex items-center gap-2 no-print">
+          <button onclick="window.print()" class="bg-white/15 hover:bg-white/25 text-white px-3.5 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-2 backdrop-blur-sm">
+            <i class="fa-solid fa-print"></i> 列印行程
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+    <!-- Navigation Tabs -->
+    <div class="flex space-x-2 border-b border-slate-200 pb-2 no-print overflow-x-auto">
+      <button onclick="switchTab('all')" id="tab-btn-all" class="tab-btn px-4 py-2 rounded-xl text-sm font-bold transition flex items-center gap-2 bg-slate-900 text-white shadow-sm">
+        <i class="fa-solid fa-layer-group"></i> 完整三日總覽
+      </button>
+      <button onclick="switchTab('day1')" id="tab-btn-day1" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 bg-white text-slate-600 hover:bg-slate-100">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span> 初一 (南投杉林溪)
+      </button>
+      <button onclick="switchTab('day2')" id="tab-btn-day2" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 bg-white text-slate-600 hover:bg-slate-100">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> 初二 (苗栗雙牧場)
+      </button>
+      <button onclick="switchTab('day3')" id="tab-btn-day3" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 bg-white text-slate-600 hover:bg-slate-100">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span> 初三 (彰化海線人文)
+      </button>
+    </div>
+
+    <!-- ==================== DAY 1 ==================== -->
+    <section id="tab-day1" class="tab-content space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-gradient-to-r from-red-600 to-red-800 text-white px-6 py-4 rounded-2xl shadow-md gap-2">
+        <div class="flex items-center gap-3">
+          <div class="bg-white/20 p-2.5 rounded-xl backdrop-blur-sm text-xl">
+            <i class="fa-solid fa-mountain-sun"></i>
+          </div>
+          <div>
+            <div class="text-xs text-amber-200 font-bold uppercase tracking-wider">2026年 新春第一天</div>
+            <h2 class="text-xl font-black">初一（Day 1）：南投鹿谷石馬公園、杉林溪與中寮泡麵土地公</h2>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 text-xs bg-red-950/40 px-3 py-1.5 rounded-lg w-fit">
+          <span><i class="fa-solid fa-ticket text-amber-300"></i> 門票：$350/人</span>
+          <span class="text-red-300">|</span>
+          <span><i class="fa-solid fa-car text-blue-300"></i> 停車費：$100/車</span>
+        </div>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="hidden md:block bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold text-xs uppercase tracking-wider">
+              <th class="py-3 px-4">出發時間</th>
+              <th class="py-3 px-3 text-center">車程需時</th>
+              <th class="py-3 px-4">到達時間</th>
+              <th class="py-3 px-5">景點名稱 / 內容重點</th>
+              <th class="py-3 px-3 text-center">滯留時間</th>
+              <th class="py-3 px-4">離開時間</th>
+              <th class="py-3 px-3 text-right">活動門票</th>
+              <th class="py-3 px-3 text-right">停車費</th>
+              <th class="py-3 px-4">行程備註與建議</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-red-600">06:30</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">—</span></td>
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-800">06:30</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-gopuram text-red-500"></i> 萬興宮 (早餐) 、土地公
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">50 分鐘</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">07:20</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">新春首日祈福求平安，於廟宇周邊享用在地早餐</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">07:20</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">60 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">08:20</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-tree text-emerald-500"></i> 南投 - 小半天石馬公園
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">1小時10分</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">09:30</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">知名河津櫻粉紅櫻花秘境，早晨清新好漫步</td>
+            </tr>
+            <tr class="hover:bg-amber-50/40 transition bg-amber-50/20">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">09:30</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">45 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">10:15</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-water text-cyan-600"></i> 南投 - 杉林溪森林生態渡假園區
+                </div>
+                <div class="text-xs text-amber-700 font-normal mt-0.5"><i class="fa-solid fa-utensils"></i> 自行先帶午餐野餐</div>
+              </td>
+              <td class="py-3.5 px-3 text-center font-bold text-amber-700">5 小時</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">15:15</td>
+              <td class="py-3.5 px-3 text-right font-bold text-red-600">$350</td>
+              <td class="py-3.5 px-3 text-right font-bold text-blue-700">$100</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">健行松瀧岩瀑布、天地眼、森林浴步道</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">15:15</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">75 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">16:30</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-bowl-food text-orange-500"></i> 南投中寮 - 石龍宮 (泡麵土地公)
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">1小時15分</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">17:45</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">下山順路朝聖發財泡麵、吃平安點心補財庫</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">17:45</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">50 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-emerald-600">18:35</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-house text-emerald-600"></i> Go Home / 家裡吃飯
+              </td>
+              <td class="py-3.5 px-3 text-center text-slate-400">—</td>
+              <td class="py-3.5 px-4 font-mono text-slate-400">—</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">經國道3號順暢返抵家門，圍爐溫馨享用晚飯</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="bg-slate-100 font-semibold text-slate-800 text-xs">
+              <td colspan="6" class="py-3 px-4 text-right">初一小計 (Day 1 Total) :</td>
+              <td class="py-3 px-3 text-right text-red-600 font-bold text-sm">$350 / 人</td>
+              <td class="py-3 px-3 text-right text-blue-700 font-bold text-sm">$100 / 車</td>
+              <td class="py-3 px-4 text-slate-500">初一順路不塞車下山方案</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Mobile Timeline Cards -->
+      <div class="md:hidden space-y-3">
+        <!-- Item 1 -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative pl-6 border-l-4 border-l-red-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-gopuram text-red-500 mr-1"></i> 萬興宮 (早餐) 、土地公</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">06:30 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：50 分鐘 | 離開：07:20</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 交通需時：出發點</p>
+            <p><i class="fa-solid fa-coins w-4"></i> 費用：門票 $0 / 停車 $0</p>
+            <p class="text-slate-600 bg-slate-50 p-1.5 rounded mt-1">新春首日祈福求平安，於廟宇周邊享用在地早餐</p>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative pl-6 border-l-4 border-l-red-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-tree text-emerald-500 mr-1"></i> 南投 - 小半天石馬公園</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">08:20 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：1小時10分 | 離開：09:30</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 交通需時：車程約 60 分鐘</p>
+            <p><i class="fa-solid fa-coins w-4"></i> 費用：門票 $0 / 停車 $0</p>
+            <p class="text-slate-600 bg-slate-50 p-1.5 rounded mt-1">欣賞河津櫻櫻花，早晨避開人潮好散步</p>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="bg-white p-4 rounded-xl border border-amber-300 shadow-sm relative pl-6 border-l-4 border-l-amber-500 bg-amber-50/20">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-water text-cyan-600 mr-1"></i> 杉林溪森林生態園區</h4>
+              <span class="text-xs text-amber-700 font-semibold"><i class="fa-solid fa-utensils"></i> 自行先帶午餐野餐</span>
+            </div>
+            <span class="bg-amber-100 text-amber-900 text-xs px-2 py-0.5 rounded font-mono font-bold">10:15 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-600 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：5 小時 | 離開：15:15</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 交通需時：車程約 45 分鐘</p>
+            <p class="font-bold text-red-600"><i class="fa-solid fa-ticket w-4"></i> 門票：$350/人 | 停車費：$100/車</p>
+            <p class="text-slate-600 bg-white p-1.5 rounded border border-amber-200 mt-1">走松瀧岩瀑布、水杉林步道，大口森呼吸</p>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative pl-6 border-l-4 border-l-red-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-bowl-food text-orange-500 mr-1"></i> 中寮石龍宮 (泡麵土地公)</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">16:30 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：1小時15分 | 離開：17:45</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 交通需時：下山車程約 75 分鐘</p>
+            <p><i class="fa-solid fa-coins w-4"></i> 費用：門票 $0 / 停車 $0</p>
+            <p class="text-slate-600 bg-slate-50 p-1.5 rounded mt-1">拜拜補財庫、品嚐熱騰騰發財泡麵充飢</p>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm relative pl-6 border-l-4 border-l-emerald-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-house text-emerald-600 mr-1"></i> Go Home / 家裡吃飯</h4>
+            <span class="bg-emerald-100 text-emerald-900 text-xs px-2 py-0.5 rounded font-mono font-bold">18:35 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-solid fa-car-side w-4"></i> 交通需時：北上車程約 50 分鐘</p>
+            <p class="text-slate-600 bg-slate-50 p-1.5 rounded mt-1">國3北上返家團聚，享用溫馨晚餐</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DAY 2 ==================== -->
+    <section id="tab-day2" class="tab-content space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-6 py-4 rounded-2xl shadow-md gap-2">
+        <div class="flex items-center gap-3">
+          <div class="bg-white/20 p-2.5 rounded-xl backdrop-blur-sm text-xl">
+            <i class="fa-solid fa-cow"></i>
+          </div>
+          <div>
+            <div class="text-xs text-emerald-200 font-bold uppercase tracking-wider">2026年 新春第二天</div>
+            <h2 class="text-xl font-black">初二（Day 2）：苗栗苑裡泉井牧場、飛牛牧場與垂坤採購</h2>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 text-xs bg-emerald-950/40 px-3 py-1.5 rounded-lg w-fit">
+          <span><i class="fa-solid fa-ticket text-amber-300"></i> 門票：$280/人</span>
+          <span class="text-emerald-300">|</span>
+          <span><i class="fa-solid fa-car text-blue-300"></i> 停車費：$50/車</span>
+        </div>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="hidden md:block bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold text-xs uppercase tracking-wider">
+              <th class="py-3 px-4">出發時間</th>
+              <th class="py-3 px-3 text-center">車程需時</th>
+              <th class="py-3 px-4">到達時間</th>
+              <th class="py-3 px-5">景點名稱 / 內容重點</th>
+              <th class="py-3 px-3 text-center">滯留時間</th>
+              <th class="py-3 px-4">離開時間</th>
+              <th class="py-3 px-3 text-right">活動門票</th>
+              <th class="py-3 px-3 text-right">停車費</th>
+              <th class="py-3 px-4">行程備註與順路設計</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-emerald-700">07:30</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">—</span></td>
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-800">07:30</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-slate-400"></i> 神岡高工 (集合出發)
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-400">—</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">07:30</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">避開初二國道回娘家尖峰車潮，提早集合準時出發</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">07:30</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">35 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">08:05</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-cow text-emerald-600"></i> 苗栗苑裡 - 泉井牧場
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">2 小時</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">10:05</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">純樸酪農牧場、近距離看乳牛、純天然鮮奶小點</td>
+            </tr>
+            <tr class="hover:bg-amber-50/40 transition bg-amber-50/20">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">10:05</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">25 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">10:30</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-clover text-emerald-600"></i> 苗栗通霄 - 飛牛牧場
+                </div>
+                <div class="text-xs text-amber-700 font-normal mt-0.5"><i class="fa-solid fa-utensils"></i> 自行先帶午餐野餐</div>
+              </td>
+              <td class="py-3.5 px-3 text-center font-bold text-emerald-700">5 小時</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">15:30</td>
+              <td class="py-3.5 px-3 text-right font-bold text-red-600">$280</td>
+              <td class="py-3.5 px-3 text-right font-bold text-blue-700">$50</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">大草原漫步野餐、餵小牛喝奶、擠牛奶互動體驗</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">15:30</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">30 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">16:00</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-rose-600"></i> 苑裡 - 垂坤肉鬆旗艦店
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">1 小時</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">17:00</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">位於國3苑裡交流道旁，南下極順路採買新年伴手禮</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">17:00</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">35 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">17:35</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-house text-slate-500"></i> Go Home (回家放戰利品/整裝)
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">25 分鐘</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">18:00</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">下交流道回家放伴手禮、稍作洗漱換裝</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">18:00</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">15 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-orange-600">18:15</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-fire text-orange-500"></i> 在地美味小火鍋 (聚餐晚宴)
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">1小時45分</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">20:00</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">約 $350</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">春節暖心圍爐吃火鍋，結束牧場舒壓一日遊</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="bg-slate-100 font-semibold text-slate-800 text-xs">
+              <td colspan="6" class="py-3 px-4 text-right">初二小計 (Day 2 Total) :</td>
+              <td class="py-3 px-3 text-right text-red-600 font-bold text-sm">$280 / 人</td>
+              <td class="py-3 px-3 text-right text-blue-700 font-bold text-sm">$50 / 車</td>
+              <td class="py-3 px-4 text-slate-500">不含小火鍋個人餐飲自由消費</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Mobile Timeline Cards -->
+      <div class="md:hidden space-y-3">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm pl-6 border-l-4 border-l-emerald-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> 神岡高工出發</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">07:30 出發</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">準時啟程，避開初二走春塞車</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm pl-6 border-l-4 border-l-emerald-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-cow text-emerald-600 mr-1"></i> 苑裡 泉井牧場</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">08:05 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：2 小時 | 離開：10:05</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 車程：約 35 分鐘</p>
+            <p><i class="fa-solid fa-coins w-4"></i> 費用：門票 $0 / 停車 $0</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-amber-300 shadow-sm pl-6 border-l-4 border-l-amber-500 bg-amber-50/20">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-clover text-emerald-600 mr-1"></i> 通霄 飛牛牧場</h4>
+              <span class="text-xs text-amber-700 font-semibold"><i class="fa-solid fa-utensils"></i> 自帶午餐野餐</span>
+            </div>
+            <span class="bg-amber-100 text-amber-900 text-xs px-2 py-0.5 rounded font-mono font-bold">10:30 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-600 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：5 小時 | 離開：15:30</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 車程：約 25 分鐘</p>
+            <p class="font-bold text-red-600"><i class="fa-solid fa-ticket w-4"></i> 門票：$280/人 | 停車費：$50/車</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm pl-6 border-l-4 border-l-rose-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-bag-shopping text-rose-600 mr-1"></i> 垂坤肉鬆旗艦店</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">16:00 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：1 小時 | 離開：17:00</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 車程：約 30 分鐘 (國3交流道旁超順路)</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm pl-6 border-l-4 border-l-orange-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-fire text-orange-500 mr-1"></i> 回神岡 ➔ 小火鍋晚餐</h4>
+            <span class="bg-orange-100 text-orange-900 text-xs px-2 py-0.5 rounded font-mono font-bold">18:15 開鍋</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 晚餐時間約 1小時45分至 20:00</p>
+            <p>先返家卸下伴手禮後輕鬆吃火鍋</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DAY 3 ==================== -->
+    <section id="tab-day3" class="tab-content space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-gradient-to-r from-amber-600 to-orange-700 text-white px-6 py-4 rounded-2xl shadow-md gap-2">
+        <div class="flex items-center gap-3">
+          <div class="bg-white/20 p-2.5 rounded-xl backdrop-blur-sm text-xl">
+            <i class="fa-solid fa-water-ladder"></i>
+          </div>
+          <div>
+            <div class="text-xs text-amber-200 font-bold uppercase tracking-wider">2026年 新春第三天【動線大優化】</div>
+            <h2 class="text-xl font-black">初三（Day 3）：芳苑海空步道、王功採蚵、溪湖糖廠與鹿港老街</h2>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 text-xs bg-amber-950/40 px-3 py-1.5 rounded-lg w-fit">
+          <span><i class="fa-solid fa-ticket text-amber-300"></i> 活動門票：約 $550/人</span>
+          <span class="text-amber-300">|</span>
+          <span><i class="fa-solid fa-car text-blue-300"></i> 停車費：$50/車</span>
+        </div>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="hidden md:block bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold text-xs uppercase tracking-wider">
+              <th class="py-3 px-4">出發時間</th>
+              <th class="py-3 px-3 text-center">車程需時</th>
+              <th class="py-3 px-4">到達時間</th>
+              <th class="py-3 px-5">景點名稱 / 內容重點</th>
+              <th class="py-3 px-3 text-center">滯留時間</th>
+              <th class="py-3 px-4">離開時間</th>
+              <th class="py-3 px-3 text-right">活動門票</th>
+              <th class="py-3 px-3 text-right">停車費</th>
+              <th class="py-3 px-4">順路調校分析</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-bold text-amber-700">07:45</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">—</span></td>
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-800">07:45</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-slate-400"></i> 神岡高工 (集合出發)
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-400">—</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">07:45</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">國1接台76快速道路直奔彰化海線最南端</td>
+            </tr>
+            <!-- 順路調整 1: 芳苑海空步道 -->
+            <tr class="hover:bg-emerald-50/50 transition bg-emerald-50/20">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">07:45</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">60 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">08:45</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-bridge-water text-teal-600"></i> 彰化芳苑 - 芳苑濕地海空步道
+                  <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">順路第一站</span>
+                </div>
+                <div class="text-xs text-slate-500 font-normal mt-0.5">紅樹林木棧道、潮間帶觀景</div>
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">1小時15分</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">10:00</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-emerald-700 font-medium">早上涼爽舒適好散步，拍照光線最佳</td>
+            </tr>
+            <!-- 順路調整 2: 王功採蚵 -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">10:00</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">15 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">10:15</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-shrimp text-orange-600"></i> 王功蚵農阿祿專車生態之旅
+                </div>
+                <div class="text-xs text-slate-500 font-normal mt-0.5">鐵牛採蚵車、摸文蛤、烤蚵吃到飽、順享午餐</div>
+              </td>
+              <td class="py-3.5 px-3 text-center font-bold text-amber-700">3 小時</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">13:15</td>
+              <td class="py-3.5 px-3 text-right font-bold text-red-600">約 $400</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">海空步道北上15分鐘即達，順便享用王功海鮮午餐</td>
+            </tr>
+            <!-- 順路調整 3: 溪湖糖廠 -->
+            <tr class="hover:bg-emerald-50/50 transition bg-emerald-50/20">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">13:15</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">30 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">13:45</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-train text-amber-600"></i> 彰化溪湖 - 溪湖糖廠
+                  <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">順路調整</span>
+                </div>
+                <div class="text-xs text-slate-500 font-normal mt-0.5">品嚐糖廠冰品、搭乘蒸汽五分車</div>
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">2 小時</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">15:45</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">約 $150</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-emerald-700 font-medium">王功沿148縣道筆直往東直達溪湖，完全不繞路</td>
+            </tr>
+            <!-- 順路調整 4: 鹿港老街 -->
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">15:45</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">25 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-slate-900">16:10</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-landmark text-red-700"></i> 鹿港老街 & 鹿港天后宮
+                  <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">順向北上</span>
+                </div>
+                <div class="text-xs text-slate-500 font-normal mt-0.5">古蹟巡禮、初三祈福、品嚐鹿港特色小吃晚餐</div>
+              </td>
+              <td class="py-3.5 px-3 text-center font-medium text-slate-600">2小時20分</td>
+              <td class="py-3.5 px-4 font-mono text-slate-600">18:30</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-bold text-blue-700">$50</td>
+              <td class="py-3.5 px-4 text-xs text-emerald-700 font-medium">傍晚不酷熱散步極佳，逛完直接走台61或國1回神岡</td>
+            </tr>
+            <tr class="hover:bg-slate-50 transition">
+              <td class="py-3.5 px-4 font-mono font-semibold text-slate-700">18:30</td>
+              <td class="py-3.5 px-3 text-center"><span class="bg-blue-50 text-blue-700 text-xs px-2 py-0.5 rounded-full font-medium">40 分鐘</span></td>
+              <td class="py-3.5 px-4 font-mono font-bold text-emerald-600">19:10</td>
+              <td class="py-3.5 px-5 font-bold text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-flag-checkered text-emerald-600"></i> 平安賦歸 (回到神岡高工 / 溫暖的家)
+              </td>
+              <td class="py-3.5 px-3 text-center text-slate-400">—</td>
+              <td class="py-3.5 px-4 font-mono text-slate-400">—</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-3 text-right font-medium text-slate-600">$0</td>
+              <td class="py-3.5 px-4 text-xs text-slate-500">圓滿結束三天新春精彩行程，平安返家</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="bg-slate-100 font-semibold text-slate-800 text-xs">
+              <td colspan="6" class="py-3 px-4 text-right">初三小計 (Day 3 Total) :</td>
+              <td class="py-3 px-3 text-right text-red-600 font-bold text-sm">約 $550 / 人</td>
+              <td class="py-3 px-3 text-right text-blue-700 font-bold text-sm">$50 / 車</td>
+              <td class="py-3 px-4 text-emerald-700 font-semibold">環狀流暢動線，省時超過 40 分鐘！</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Mobile Timeline Cards -->
+      <div class="md:hidden space-y-3">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm pl-6 border-l-4 border-l-amber-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> 神岡高工出發</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">07:45 出發</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">走台76線快速道路往芳苑海岸直奔</p>
+        </div>
+
+        <div class="bg-emerald-50/30 p-4 rounded-xl border border-emerald-200 shadow-sm pl-6 border-l-4 border-l-teal-500">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">順路首站</span>
+              <h4 class="font-bold text-base text-slate-900 mt-1"><i class="fa-solid fa-bridge-water text-teal-600 mr-1"></i> 芳苑海空步道</h4>
+            </div>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">08:45 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：1小時15分 | 離開：10:00</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 車程：約 60 分鐘</p>
+            <p>清晨海風涼爽，紅樹林濕地景緻一覽無遺</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm pl-6 border-l-4 border-l-orange-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-shrimp text-orange-600 mr-1"></i> 王功阿祿採蚵車生態之旅</h4>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">10:15 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：3 小時 (含午餐) | 離開：13:15</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 車程：僅 15 分鐘 (順向往北)</p>
+            <p class="font-bold text-red-600"><i class="fa-solid fa-ticket w-4"></i> 體驗與烤蚵：約 $400/人</p>
+          </div>
+        </div>
+
+        <div class="bg-emerald-50/30 p-4 rounded-xl border border-emerald-200 shadow-sm pl-6 border-l-4 border-l-amber-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">順路調整</span>
+              <h4 class="font-bold text-base text-slate-900 mt-1"><i class="fa-solid fa-train text-amber-600 mr-1"></i> 溪湖糖廠</h4>
+            </div>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">13:45 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：2 小時 | 離開：15:45</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 車程：約 30 分鐘 (沿148線東行直達)</p>
+            <p><i class="fa-solid fa-ticket w-4"></i> 五分車+冰棒：約 $150/人</p>
+          </div>
+        </div>
+
+        <div class="bg-emerald-50/30 p-4 rounded-xl border border-emerald-200 shadow-sm pl-6 border-l-4 border-l-red-600">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">順向北上</span>
+              <h4 class="font-bold text-base text-slate-900 mt-1"><i class="fa-solid fa-landmark text-red-700 mr-1"></i> 鹿港老街 & 天后宮</h4>
+            </div>
+            <span class="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded font-mono font-bold">16:10 抵達</span>
+          </div>
+          <div class="mt-2 text-xs text-slate-500 space-y-1">
+            <p><i class="fa-regular fa-clock w-4"></i> 滯留：2小時20分 | 離開：18:30</p>
+            <p><i class="fa-solid fa-car-side w-4"></i> 車程：約 25 分鐘</p>
+            <p><i class="fa-solid fa-square-parking w-4"></i> 停車費：約 $50/車</p>
+            <p>傍晚不炎熱，天后宮祈福後逛老街享用在地小吃晚餐</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm pl-6 border-l-4 border-l-emerald-500">
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-base text-slate-900"><i class="fa-solid fa-flag-checkered text-emerald-600 mr-1"></i> 平安賦歸神岡</h4>
+            <span class="bg-emerald-100 text-emerald-900 text-xs px-2 py-0.5 rounded font-mono font-bold">19:10 抵達</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">走台61或國1約 40 分鐘直達神岡</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget & Checklist Summary -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Total Budget Card -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+              <i class="fa-solid fa-wallet text-amber-500"></i> 三日費用明細彙總
+            </h3>
+            <span class="text-xs text-slate-400">初一至初三</span>
+          </div>
+          <div class="mt-4 space-y-3 text-sm">
+            <div class="flex justify-between items-center text-slate-600">
+              <span>初一 (杉林溪門票+停車)</span>
+              <span class="font-mono font-bold text-slate-800">門票 $350 / 車 $100</span>
+            </div>
+            <div class="flex justify-between items-center text-slate-600">
+              <span>初二 (飛牛牧場門票+停車)</span>
+              <span class="font-mono font-bold text-slate-800">門票 $280 / 車 $50</span>
+            </div>
+            <div class="flex justify-between items-center text-slate-600">
+              <span>初三 (王功採蚵+糖廠+鹿港)</span>
+              <span class="font-mono font-bold text-slate-800">活動 $550 / 車 $50</span>
+            </div>
+            <div class="pt-3 border-t border-dashed border-slate-200 flex justify-between items-baseline">
+              <span class="font-bold text-slate-800">個人基本總支出預估</span>
+              <span class="text-2xl font-black text-red-600 font-display">NT$ 1,180 <span class="text-xs font-normal text-slate-500">/人</span></span>
+            </div>
+            <div class="flex justify-between items-baseline text-xs text-slate-500">
+              <span>三日整車停車費總計</span>
+              <span class="font-bold text-blue-700 font-mono text-sm">NT$ 200 / 車</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 mt-4 italic bg-slate-50 p-2 rounded">
+          * 以上不含個人採買伴手禮、加油費及 Day 2 小火鍋餐費。
+        </p>
+      </div>
+
+      <!-- Packing Checklist -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-emerald-500"></i> 新春出遊隨身備忘清單
+          </h3>
+        </div>
+        <ul class="mt-4 space-y-2.5 text-xs text-slate-600">
+          <li class="flex items-center gap-2">
+            <input type="checkbox" id="c1" class="rounded text-red-600 focus:ring-red-500" checked>
+            <label for="c1"><strong>自備午餐</strong>：Day 1 杉林溪、Day 2 飛牛牧場野餐輕食</label>
+          </li>
+          <li class="flex items-center gap-2">
+            <input type="checkbox" id="c2" class="rounded text-red-600 focus:ring-red-500" checked>
+            <label for="c2"><strong>高山保暖</strong>：初一杉林溪海拔高溫差大，備禦寒外套</label>
+          </li>
+          <li class="flex items-center gap-2">
+            <input type="checkbox" id="c3" class="rounded text-red-600 focus:ring-red-500" checked>
+            <label for="c3"><strong>換洗衣物</strong>：初三王功採蚵摸蛤易沾濕，帶備用衣物襪子</label>
+          </li>
+          <li class="flex items-center gap-2">
+            <input type="checkbox" id="c4" class="rounded text-red-600 focus:ring-red-500" checked>
+            <label for="c4"><strong>環保購物袋</strong>：初二垂坤採購與鹿港老街必備大袋子</label>
+          </li>
+          <li class="flex items-center gap-2">
+            <input type="checkbox" id="c5" class="rounded text-red-600 focus:ring-red-500" checked>
+            <label for="c5"><strong>個人零錢</strong>：拜拜香油錢、石龍宮添油香、投幣機飲料</label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Emergency & Navigation Quick Links -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+            <i class="fa-solid fa-traffic-light text-blue-500"></i> 行車導航與路況建議
+          </h3>
+        </div>
+        <div class="mt-4 space-y-3 text-xs text-slate-600">
+          <div class="p-2.5 bg-blue-50/60 rounded-xl border border-blue-100">
+            <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5">
+              <i class="fa-solid fa-shield-halved"></i> 避開初一/初二塞車訣竅
+            </div>
+            <p class="leading-relaxed text-blue-800/90">
+              杉林溪下山建議於 15:30 前出發，銜接中寮石龍宮走縣道避開竹山交流道瓶頸；初二回程在垂坤買完後可直接由苑裡交流道上國3，動線最短。
+            </p>
+          </div>
+          <div class="p-2.5 bg-amber-50/60 rounded-xl border border-amber-100">
+            <div class="font-bold text-amber-900 mb-1 flex items-center gap-1.5">
+              <i class="fa-solid fa-water"></i> 王功潮汐注意
+            </div>
+            <p class="leading-relaxed text-amber-800/90">
+              阿祿採蚵車出海視當日潮汐退潮時間調整，建議出發前一週先行致電預約確認集合時間。
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+      <p class="text-slate-300 font-medium">祝您 2026 新春佳節愉快，闔家平安，出遊一路順風！</p>
+      <p class="text-slate-500">本網頁可直接離線保存，支援手機、平板直向橫向瀏覽與友善列印模式。</p>
+    </div>
+  </footer>
+
+  <!-- Tab Interaction Script -->
+  <script>
+    function switchTab(day) {
+      const tabs = ['day1', 'day2', 'day3'];
+      const buttons = {
+        all: document.getElementById('tab-btn-all'),
+        day1: document.getElementById('tab-btn-day1'),
+        day2: document.getElementById('tab-btn-day2'),
+        day3: document.getElementById('tab-btn-day3'),
+      };
+
+      // Reset all buttons styling
+      Object.keys(buttons).forEach(k => {
+        if(buttons[k]) {
+          buttons[k].className = 'tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2 bg-white text-slate-600 hover:bg-slate-100';
+        }
+      });
+
+      if (day === 'all') {
+        buttons.all.className = 'tab-btn px-4 py-2 rounded-xl text-sm font-bold transition flex items-center gap-2 bg-slate-900 text-white shadow-sm';
+        tabs.forEach(t => {
+          const el = document.getElementById('tab-' + t);
+          if (el) el.style.display = 'block';
+        });
+      } else {
+        if (buttons[day]) {
+          buttons[day].className = 'tab-btn px-4 py-2 rounded-xl text-sm font-bold transition flex items-center gap-2 bg-slate-900 text-white shadow-sm';
+        }
+        tabs.forEach(t => {
+          const el = document.getElementById('tab-' + t);
+          if (el) {
+            el.style.display = (t === day) ? 'block' : 'none';
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>
